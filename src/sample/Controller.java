@@ -31,6 +31,8 @@ public class Controller implements Initializable {
             contacts.add(contact);
         }
         name.clear();
+        phoneNumber.clear();
+        email.clear();
     }
     public void onRemove(){
         SelectionModel model = list.getSelectionModel();
