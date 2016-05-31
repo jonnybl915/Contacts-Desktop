@@ -8,8 +8,13 @@ import javafx.scene.control.SelectionModel;
 import javafx.scene.control.TextField;
 import javafx.fxml.Initializable;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import jodd.json.JsonSerializer;
+
 
 public class Controller implements Initializable {
 
@@ -23,13 +28,14 @@ public class Controller implements Initializable {
     @FXML
     ListView list;
 
-    ObservableList<Contact> contacts = FXCollections.observableArrayList();
+    static ObservableList<Contact> contacts = FXCollections.observableArrayList();
 
-    public void onAdd(){
+    public void onAdd() throws IOException {
         Contact contact = new Contact(name.getText(), phoneNumber.getText(), email.getText());
         if (!name.getText().isEmpty() && !phoneNumber.getText().isEmpty() && !email.getText().isEmpty()) {
             contacts.add(contact);
         }
+        writeFileJson(contacts.toString());
         name.clear();
         phoneNumber.clear();
         email.clear();
@@ -41,9 +47,17 @@ public class Controller implements Initializable {
 
     }
 
+    public static void writeFileJson(String contacts) throws IOException {
+        File f = new File("contactList");
+        JsonSerializer serializer = new JsonSerializer();
+        String json = serializer.serialize(contacts);
+        FileWriter fw = new FileWriter(f);
+        fw.write(json);
+        fw.close();
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         list.setItems(contacts);
-
     }
 }
