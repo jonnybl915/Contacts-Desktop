@@ -17,8 +17,6 @@ public class Contact {
     @Override
     public String toString() {
         return
-                name +
-                ", phoneNumber'" + phoneNumber +
-                ", email'" + email;
+                name +", " + phoneNumber+ ", " + email;
     }
 }

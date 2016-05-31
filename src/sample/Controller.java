@@ -27,9 +27,9 @@ public class Controller implements Initializable {
 
     public void onAdd(){
         Contact contact = new Contact(name.getText(), phoneNumber.getText(), email.getText());
-        if (!(name.getText().isEmpty() || (phoneNumber.getText().isEmpty() || (email.getText().isEmpty())))); {
+        if (!name.getText().isEmpty() && !phoneNumber.getText().isEmpty() && !email.getText().isEmpty()) {
+            contacts.add(contact);
         }
-        contacts.add(contact);
         name.clear();
     }
     public void onRemove(){
@@ -41,8 +41,6 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-       // if (!(name.getText().isEmpty() || (phoneNumber.getText().isEmpty() || (email.getText().isEmpty())))); {
-        //}
         list.setItems(contacts);
 
     }
