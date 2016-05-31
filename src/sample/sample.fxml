@@ -1,8 +1,23 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<GridPane fx:controller="sample.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-</GridPane>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <HBox prefHeight="1.0" prefWidth="600.0">
+         <children>
+            <TextField />
+            <TextField />
+            <TextField />
+            <Button minWidth="-Infinity" mnemonicParsing="false" text="Add" />
+            <Button minWidth="-Infinity" mnemonicParsing="false" text="Remove" />
+         </children>
+      </HBox>
+      <ListView prefHeight="383.0" prefWidth="600.0" />
+   </children>
+</VBox>
