@@ -19,4 +19,16 @@ public class Contact {
         return
                 name +", " + phoneNumber+ ", " + email;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
 }

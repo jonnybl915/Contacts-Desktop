@@ -9,10 +9,14 @@ import javafx.scene.control.TextField;
 import javafx.fxml.Initializable;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Scanner;
+
+import jodd.json.JsonParser;
 import jodd.json.JsonSerializer;
 
 
@@ -35,7 +39,8 @@ public class Controller implements Initializable {
         if (!name.getText().isEmpty() && !phoneNumber.getText().isEmpty() && !email.getText().isEmpty()) {
             contacts.add(contact);
         }
-        writeFileJson(contacts.toString());
+
+        writeFileJson(contacts);
         name.clear();
         phoneNumber.clear();
         email.clear();
@@ -47,17 +52,32 @@ public class Controller implements Initializable {
 
     }
 
-    public static void writeFileJson(String contacts) throws IOException {
-        File f = new File("contactList");
+    public static void writeFileJson(ObservableList<Contact> contacts) throws IOException {
+        File f = new File("contactList.json");
         JsonSerializer serializer = new JsonSerializer();
         String json = serializer.serialize(contacts);
         FileWriter fw = new FileWriter(f);
         fw.write(json);
         fw.close();
     }
+    public static Contact loadContactList(String filename) {
+        File f = new File(filename);
+        try {
+            Scanner scanner = new Scanner(f);
+            scanner.useDelimiter("\\Z");
+            String contents = scanner.next();
+            JsonParser parser = new JsonParser();
+            return parser.parse(contents, Contact.class);
+        } catch (FileNotFoundException e) {
+        }
+        return null;
+    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         list.setItems(contacts);
+        loadContactList("contactList.json");
+
     }
 }
