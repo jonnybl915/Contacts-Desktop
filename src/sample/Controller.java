@@ -60,24 +60,26 @@ public class Controller implements Initializable {
         fw.write(json);
         fw.close();
     }
-    public static Contact loadContactList(String filename) {
-        File f = new File(filename);
-        try {
-            Scanner scanner = new Scanner(f);
-            scanner.useDelimiter("\\Z");
-            String contents = scanner.next();
-            JsonParser parser = new JsonParser();
-            return parser.parse(contents, Contact.class);
-        } catch (FileNotFoundException e) {
-        }
-        return null;
-    }
+//    public static Contact loadContactList(String filename) {
+//        File f = new File(filename);
+//        try {
+//            Scanner scanner = new Scanner(f);
+//            scanner.useDelimiter("\\Z");
+//            String contents = scanner.next();
+//            JsonParser parser = new JsonParser();
+//            ObservableList<Contact> contacts = FXCollections.observableArrayList();
+//            return parser.parse(contents, Contact.class);
+//        } catch (FileNotFoundException e) {
+//        }
+//        return null;
+//    }
+
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         list.setItems(contacts);
-        loadContactList("contactList.json");
+        //loadContactList("contactList.json");
 
     }
 }
