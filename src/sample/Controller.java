@@ -73,6 +73,9 @@ public class Controller implements Initializable {
 //        }
 //        return null;
 //    }
+    //might need to use ArrayList<Hashmap<String, String>> list = parser.parse(contents);
+    //for (Hashmap<String, String> h: list){
+    //contacts.add(new Contact(h.get("name"), h.get("email"), h.get("phonenumber")
 
 
 
